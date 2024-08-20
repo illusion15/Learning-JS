@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #222;
+    color: #fff;
+}
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top:50px ;
+}
+.container button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addToBag, .sale{
+    background: lightgreen;
+    border: 0px;
+}
+main h1{
+    text-align: center;
+    margin-top: 50px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>practice (if-else & boolean)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p id="ticketPrice">Hello</p><br>
+    <p id="discountPrice"></p>
+    <script>
+        let age = 70;
+        let originalTktPrice = 100;
+        let finalTicket;
+        if (age < 5) {
+            finalTicket = originalTktPrice * 0;
+        }else if (age >= 5 && age <= 8 ){
+            finalTicket = originalTktPrice/2 ; //50 % off (half ticket)
+        }else if(age > 65) {
+            finalTicket = originalTktPrice - originalTktPrice*0.3;
+        }else{
+            finalTicket = originalTktPrice;
+        }
+
+        let gender = 'female';
+        if(gender === 'female'){
+            finalTicket = finalTicket/2; // 50% off
+        }else{
+            finalTicket === finalTicket;
+        }
+        document.querySelector('#ticketPrice').innerText = `Your Ticket price is : ${finalTicket}`;
+        document.querySelector('#discountPrice').innerText = `Your Discount price is : ${100 - finalTicket}`;
+
+    </script>
+</body>
+</html>

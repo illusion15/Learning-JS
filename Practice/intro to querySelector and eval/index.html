@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice variable</title>
+    <style>
+        body{
+            background: #222;
+            color: antiquewhite;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <div> 
+        <p id="name-display"></p>
+    </div>
+
+
+     <script>
+        // TASK-1 :Making the below para a variable and printing it on page:
+      /*  const myName = 'Priyanshu' ;
+
+        console.log(myName);
+        document.querySelector('#name-display').innerText = myName;
+
+        */
+
+        // TASK-2: Making a MYntra cart variable + (GST percentage a variable):
+      /*  const GSTpercentage = 19 ;
+        let cartValue = `Your GST amount is: ${Math.round(((1 * 79990) + (2 * 24990))* GSTpercentage/100)}` ;
+
+        document.querySelector('#name-display').innerText = cartValue;
+        */ 
+
+        //TASK-3: Using eval method, It makes string value numbers :
+        document.querySelector('#name-display').innerText = `Your GST amount: ` + (eval('40 + 39')) ;
+                    // Here, due to eval a string '40 + 39' is treated as numbers. Rather than showing catenation property, it is added
+    </script>
+   
+</body>
+</html>
