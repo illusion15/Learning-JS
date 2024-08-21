@@ -10,7 +10,15 @@
     <h1>Bat Ball Stump Game</h1>
     <button onclick="
         generateRandomNumber();
-        printResult();
+        
+        let resultMsg;
+        if (computerChoice === 'Ball'){
+            resultMsg = ('You won');
+        }else if (computerChoice === 'Stump'){
+            resultMsg = ('Computer won');
+        }else{
+            resultMsg = (`It's a Tie`);
+        }
 
         alert(`You have chosen Bat. \nComputer choice is ${computerChoice} . \n\nSo, ${resultMsg}`);
 
@@ -22,9 +30,9 @@
         if (computerChoice === 'Ball'){
             resultMsg = (`It's a tie`);
         }else if (computerChoice === 'Stump'){
-            resultMsg = ('Computer won');
-        }else{
             resultMsg = (`You won`);
+        }else{
+            resultMsg = ('Computer won');
         }
 
         alert(`You have chosen Ball. Computer choice is ${computerChoice} . So, ${resultMsg}`);
@@ -34,7 +42,7 @@
 
     <button onclick="
         generateRandomNumber();
-        
+
         if (computerChoice === 'Ball'){
             resultMsg = (`Computer won`);
         }else if (computerChoice === 'Stump'){
@@ -45,7 +53,6 @@
         }
 
         alert(`You have chosen Stump. Computer choice is ${computerChoice} . So, ${resultMsg}`);
-
 
     ">Stump</button>
     <script>
@@ -63,16 +70,6 @@
         }
         }
 
-        let resultMsg;
-    function printResult(){    
-        if (computerChoice === 'Ball'){
-            resultMsg = ('You won');
-        }else if (computerChoice === 'Stump'){
-            resultMsg = ('Computer won');
-        }else{
-            resultMsg = (`It's a Tie`);
-        }
-    }    
     </script>   
 </body>
 </html>

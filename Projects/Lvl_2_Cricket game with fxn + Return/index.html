@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Cricket Game</title>
+    <style>
+        body{
+            background: #222;
+            color: antiquewhite;
+        }
+        .ruleOfGame{
+            background: #444;
+            padding: 20px;
+            width: fit-content;
+            box-sizing: border-box;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Bat Ball Stump Game</h1>
+    <button onclick="
+        let computerChoice = generateRandomNumber(); // previously it was only generateRandomNumber(); but after making the fxn local and return-ing the value of computerChoice;
+
+        let resultMsg;
+        if (computerChoice === 'Ball'){
+            resultMsg = ('You won');
+        }else if (computerChoice === 'Stump'){
+            resultMsg = ('Computer won');
+        }else{
+            resultMsg = (`It's a Tie`);
+        }
+        alert(`You have chosen Bat. Computer choice is ${computerChoice} . \nSo, ${resultMsg}`);
+
+        ">Bat</button>
+    
+    <button onclick="
+        computerChoice = generateRandomNumber();
+
+        if (computerChoice === 'Ball'){
+            resultMsg = (`It's a tie`);
+        }else if (computerChoice === 'Stump'){
+            resultMsg = ('You won');
+        }else{
+            resultMsg = (`Computer won`);
+        }
+
+        alert(`You have chosen Ball. Computer choice is ${computerChoice} . \nSo, ${resultMsg}`);
+
+
+    ">Ball</button>
+
+    <button onclick="
+        computerChoice = generateRandomNumber();
+        
+        if (computerChoice === 'Ball'){
+            resultMsg = (`Computer won`);
+        }else if (computerChoice === 'Stump'){
+            resultMsg = (`It's a tie.`);
+        }else{
+            // I can use else if(computerChoice === 'Bat')
+            resultMsg = (`You won`);
+        }
+
+        alert(`You have chosen Stump. Computer choice is ${computerChoice} . \nSo, ${resultMsg}`);
+
+
+    ">Stump</button>
+        <br><hr>
+        <div class="ruleOfGame" >
+            <h2>Rules of the game</h2>
+            <table border="2px solid #fff">
+                <th>DOMINATING</th>
+                <th>RESESIVE</th>
+                
+                <tr>
+                    <td>Bat</td>
+                    <td>Ball</td>
+                </tr>
+                <tr>
+                    <td>Ball</td>
+                    <td>Wicket</td>
+                </tr>
+                <tr>
+                    <td>Wicket</td>
+                    <td>Bat</td>
+                </tr>
+            </table>
+        </div>
+
+    <script>
+        // let computerChoice;  (Here it's a global var... making it local) And we will solve the prblm with 'return' 
+    function generateRandomNumber(){
+        let randomNumber = Math.random() * 3;
+        let computerChoice;  // made it local from global 
+        if (randomNumber > 0 && randomNumber <= 1){
+            computerChoice = 'Bat';
+
+        }else if (randomNumber >1 && randomNumber <=2){
+            computerChoice = 'Ball';
+
+        }else{
+            computerChoice = 'Stump';
+        }
+        return computerChoice;
+        }
+
+        
+   
+    </script>   
+</body>
+</html>
