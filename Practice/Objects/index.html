@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Practice of Objects</title>
+    <style>
+        body{
+            background: #222;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let product = {
+            Brand : 'Puma',
+            Name: 'Running Shoes',
+            Price: 4999,
+            'item-fabric': 'cotton',  //we can asign properties in sting, if we have to use hyphen (-) in properties name
+            rating: {      //nested properties is allowed in object
+                stars: 4.5,
+                noOfReviews: 15,
+            }, //NOTE: here, comma is must 
+            displayPrice : function(){           //Function under object is known as 'method'
+                console.log(`Price of the product is: Rs. ${product.Price}`)
+               // OR console.log(`Price of the product is: Rs. ${this.Price}`)
+            }
+        };
+        product.displayPrice(); // we are calling property of an object. So , we can't call the funciton directly
+        // point to be noted, here, function name is written outside the bractice or we can say object property itself is considered as function name. this type of funciton is known as anonymous function
+
+        console.log(product);
+        console.log(`Your ${product.Name} price is Rs. ${product.Price}`); // here, calling object properties/key with . is known as "dot notation"
+        // these were also dot notation: 
+        //console.log()  and 
+        //Math.random()  it means we are calling the property 'random' of an object named Math; 
+
+
+        //calling object by "bracket notation" 
+        console.log(product['Name']);
+
+        // Bracket notation is generally used:
+        //Use 1: when object properties are asigned as sting
+        console.log(product['item-fabric']);
+
+        //Use 2: when we know this specific property ('item-fabric') is their in object but we don't know whether it's a var or a string. Bcz we if we use dot their may be a error
+        let propertyName = 'item-fabric';
+        console.log(product[propertyName]);
+
+        // overriding the properties:
+        product.Brand = 'Nike';
+        console.log(product);
+
+        // we can check typeof also of an object
+        console.log(typeof product);
+
+        //we can delete a property of an object
+        delete product.Price; 
+        // OR delete product['Price'];
+        console.log(product);
+
+
+        // NOTE: normal string or a number is know as 'Primitive'
+        // Q. What is autoboxing?
+        // when primitive is automatically converted into objects it's known as autoboxing:
+        console.log('My name is Priyanshu'.length);
+        console.log('My name is Priyanshu'.toUpperCase());
+        console.log('My name is Priyanshu'.replace('Priyanshu', 'Manish kr Bhaskar'));
+
+        
+        
+        // Object References:
+        // 1) for Primitives:
+        let a = 10;
+        let b = a ;
+        console.log(a , b);
+        a = 15; //Over-rided value of a
+        console.log(a, b); // Here, value of b which was assigned equals to a.. doesn't changed after overriding bcz b copied the value of a (it doesn't taken refrence of a, only)
+
+        // 2) for objects:
+        let x = {num : 10 };
+        let y = x;
+        console.log(x.num, y.num);
+        x.num = 15;
+        console.log(x.num, y.num); // As we can see, here, value of y also changed after changing x. It means y is taking refrence of x.. (it doesn't copy the value)
+
+
+        // Object Shortcuts:
+        let product2 = {
+            company2: 'Mango',
+            itemName: 'Kacha Badam',
+            Price: 2,
+        };
+        // Destructuring let company2 = product2.company
+        // is same as 
+        let { company2 } = product2;
+        console.log(company2); // we don't have to write product2.company2 to call this :> this is the benifit of it. 
+        //we can call multipy properties also
+        let {itemName, Price} = product2;
+        console.log(itemName);
+        console.log(Price + 'rupya');
+
+
+        // EXERCISE-1: Create object to represent a product from Myntra
+        let product3 = {
+            brand: 'US Polo',
+            itemName: 'white shooes',
+            price: 1299,
+            'delivery-time': 'sat 25th',
+        }
+
+        // EXERCISE-2: Create an Object with two references and log changes to one object by changing the other one:
+        let copyProduct3 = product3;
+        console.log(product3);
+        copyProduct3.brand = 'Puma';
+        console.log(copyProduct3);
+
+        // EXERCISE-3: Use bracket notation to display delivery time
+        console.log(product3['delivery-time']);
+
+        // EXERCISE-4: Given an object {message: 'good job', status: 'complete'}, use de-structuring to create two variables message and status.
+        let sandes = {
+            message: 'good job',
+            status: 'complete',
+        };
+        let {message, status} = sandes;
+        // let {status} = sandes;
+        console.log(message);
+        console.log(status);
+
+        // EXERCISE-5: Add function isIdenticalProduct to compare two product objects.
+        function isIdenticalProduct(prdct1, prdct2){          //prdct1 is just a local parameter so it can not be used to compare
+            if (typeof prdct1 !== 'object' || typeof prdct2 !== 'object' ){
+                console.warn(`Given parameter is not an object`);
+                return false;
+            }
+            if( prdct1 == prdct2){
+                return true;
+            }
+            if(
+                prdct1.brand == prdct2.brand &&
+                prdct1.item == prdct2.item &&
+                prdct1.size == prdct2.size){
+                    return true;
+            }else{
+                return false;
+            }
+        };
+
+        let prdct2 = {
+            brand: 'Levis',
+            item: 't-shirt',
+            size: 's',
+            'delivery-time': 'yesterday',
+        };
+
+        let product4 = {
+            brand: 'Levis',
+            item: 't-shirt',
+            size: 's',
+            'delivery-time': 'yesterday',
+        };
+
+        // Now here we can compary two object
+        console.log(isIdenticalProduct(product, ''));
+        console.log(isIdenticalProduct(product, product));
+        console.log(isIdenticalProduct(product, prdct2));
+        console.log(isIdenticalProduct(product, product4));
+        console.log(isIdenticalProduct(product4, prdct2));
+        console.log(isIdenticalProduct(prdct2, product4));
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>
