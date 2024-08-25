@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Date Practice</title>
+</head>
+<body>
+    <button class="mybutton">Click Me</button>
+    <div class="my-div">This is a div</div>
+    <script>
+        let myDate = new Date ();
+        console.log(myDate);
+        console.log(myDate.getTime()); // it shows expok value. It means no. of milliseconds since 1st jan 1970 (arround)
+        console.log(myDate.getFullYear());
+        console.log(myDate.getDay()); //nth day of week
+        console.log(myDate.getHours());
+        console.log(myDate.getMinutes());
+        console.log(myDate.getMilliseconds());
+
+
+
+        // DOM
+        // it throw info about the current page of the browser;
+        // DOM and Element properties: 1. Location 2. title 3. href 4. domain 5. innerHTML 6. innerText 7. classList and so on..
+        console.log(document.title); // it gives page title
+        console.log(document.title = 'Priyanshu'); // we can change page title also;
+        console.log(
+            document.querySelector('button').classList
+        ); // so, through classlist we can check an elements class name or id name. We can add new class also
+        console.log(
+            document.querySelector('button').classList.add('apnaButton')
+        ); // we can check it in: inspect/Elements
+
+        // DOM and Element Methods: for eg: createElement();
+        let btn = document.createElement('Button'); // creates a button
+        btn.innerText = 'Press Me'; 
+        document.querySelector('.my-div').appendChild(btn); // we have to specify where does the button exist. So, we added button inside the div as it's child.
+
+        
+
+
+
+    </script>
+</body>
+</html>

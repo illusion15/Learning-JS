@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JSON Practice</title>
+</head>
+<body>
+    <h1>JSON: JavaScript Object Notation</h1>
+    <h2>JSON is a data format or data representation. Whereas, JavaScript is a data structure.</h2>
+    <h3>From JSON, we do local storage (storage of data by browser).</h3>
+    <script>
+        let product = {
+            brand: 'puma',
+            item: 'shoes',
+            price: 2999,
+            rating:{
+                stars: 3.9,
+                reviews: 59,
+            },
+        };
+
+        console.log(typeof product);
+        console.log(product);
+
+        let str = JSON.stringify(product); // object (product) is converted into string(str);
+        console.log(str);
+        console.log(typeof str);
+
+        let newProduct = JSON.parse(str); // string (str) is converted back into Object (newProduct)
+        console.log(typeof newProduct);
+        console.log( newProduct);
+
+        // NOTE: Strings are easy to transport over network. That's why this conversion is done by us before sending or receiving a data
+
+        
+        
+        
+        // LOCAL STORAGE:
+        localStorage.setItem('Name', 'Priyanshu');  // check it on: inspect/Application/Local storage/
+        // It wil get stored permanently; will not erase on refresing the page or closing the browser;
+        // NOTE: Only strings can be saved in local storage;
+
+        console.log(localStorage.getItem('Name')); // to get stored data
+        localStorage.setItem('product', JSON.stringify(product)); // storing the object (product) 
+
+        let product2 = JSON.parse(localStorage.getItem('product')); // calling string(product) from local storage by converting it into object
+        console.log(product2);
+
+        // we can remove the stored data also
+        localStorage.removeItem('Name');
+
+        localStorage.clear() //use this to clear whole local storage;
+
+        // NOTE: we don't store sensitive data to browser; it is stored in the backend.
+
+
+        
+
+
+    </script>
+</body>
+</html>

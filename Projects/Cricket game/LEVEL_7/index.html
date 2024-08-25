@@ -3,33 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project: Cricket Game</title>
-    <style>
-        body{
-            background: #222;
-            color: antiquewhite;
-        }
-        .ruleOfGame{
-            background: #444;
-            padding: 20px;
-            width: fit-content;
-            box-sizing: border-box;
-            
-        }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Bat Ball Stump Game</h1>
-    <button onclick="
+    <button class="choice-button" onclick="
         let computerChoice = generateRandomNumber(); 
 
         let resultMsg = result('Bat', computerChoice);
         
         showResult('Bat', computerChoice, resultMsg);
 
-        ">Bat</button>
+        "><img src="image/bat.png" alt="bat image" class="choice-img">
+    </button>
     
-    <button onclick="
+    <button class="choice-button" onclick="
         computerChoice = generateRandomNumber(); 
 
         resultMsg = result('Ball', computerChoice);
@@ -37,9 +26,10 @@
         showResult('Ball', computerChoice, resultMsg);
 
 
-    ">Ball</button>
+        "><img src="image/ball.png" alt="ball image" class="choice-img">
+    </button>
 
-    <button onclick="
+    <button class="choice-button" onclick="
         computerChoice = generateRandomNumber();
         
         resultMsg = result('Stump', computerChoice);
@@ -47,7 +37,16 @@
         showResult('Stump', computerChoice, resultMsg);
 
 
-    ">Stump</button>
+        "><img src="image/stump.png" alt="stump image" class="choice-img"></button>
+
+
+    <h3 id="user-move"></h3>
+    <h3 id="computer-move"></h3>
+    <h3 id="result"></h3>
+    <h3 id="score"></h3>
+
+    <button onclick="localStorage.clear()
+    ; resetScore()">RESET</button>
 
     <!--================ Rules of the game ================== -->
         <br><hr>
@@ -128,28 +127,45 @@
                 return `It's a tie`;
             }
         }        
-    }        
+    };        
 
     
     // Making Function for resultShowing on the basis of yourChoice, computerChoice and result on alert
 
     function showResult(yourChoice, computerChoice, result){
-        alert(`You have chosen ${yourChoice}. Computer choice is ${computerChoice}. 
-        \nSo, ${result}
-        
-        ${score.displayScore()}`);
-    }; //no. of matches won, lost and tie is displaced from here to object (score) and made a function displayScore 
+        localStorage.setItem('Score', JSON.stringify(score));
+
+        document.querySelector('#user-move').innerText = yourChoice ? `You have chosen ${yourChoice}` : '';
+        /* BOTH SAME (bcz by default it's already undefined (thruthy and falsy concept))
+        document.querySelector('#user-move').innerText = yourChoice !== undefined  ? `You have chosen ${yourChoice}` : '';  */
+
+        document.querySelector('#computer-move').innerText = computerChoice ? `Computer choice is ${computerChoice}` : '';
+
+        document.querySelector('#result').innerText = result || '';
+        // OR
+        // document.querySelector('#result').innerText = result ? `So, ${result}` : '';
+
+        document.querySelector('#score').innerText = score.displayScore();
+    };
 
     // mantaining score with the help of object
-    let score = {
-        Won: 0,  // zero is representing initial value;
-        Lost: 0,
-        Tie: 0,
-        displayScore: function(){
-            return `No. of matches Won:${score.Won}, Lost: ${score.Lost}, Tie: ${score.Tie}`; 
-        }
-    }; // we will now update this in result and then adding it in alert
-   
-    </script>   
+    let scoreStr = localStorage.getItem('Score');
+    let score;
+    resetScore(scoreStr);
+
+    function resetScore(scoreStr){
+        score = scoreStr ? JSON.parse(scoreStr) : {
+            Won: 0,  
+            Lost: 0,
+            Tie: 0,
+        };
+        score.displayScore = function(){
+            return `SCOREBOARD: Won:${score.Won}, Lost: ${score.Lost}, Tie: ${score.Tie}`;
+    };
+        showResult(); // used this to show the clear scoreboard just after clicking th eRESET button;
+    };    
+    
+    </script>
+    
 </body>
 </html>
